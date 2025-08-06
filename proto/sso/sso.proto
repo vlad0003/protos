@@ -1,8 +1,6 @@
 syntax = "proto3";
 
-package auth;
-
-option go_package = "gen/go/sso";
+option go_package = "internal/gen/user;userpb";
 
 package user;
 
@@ -13,6 +11,7 @@ service UserService {
 message CreateUserRequest {
     string name = 1;
     string email = 2;
+    string password = 3;
 }
 
 message CreateUserResponse {
