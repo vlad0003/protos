@@ -253,6 +253,110 @@ func (x *LoginUserResponse) GetMessage() string {
 	return ""
 }
 
+type GetUserByIdResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserByIdResponse) Reset() {
+	*x = GetUserByIdResponse{}
+	mi := &file_api_user_user_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserByIdResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserByIdResponse) ProtoMessage() {}
+
+func (x *GetUserByIdResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_api_user_user_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserByIdResponse.ProtoReflect.Descriptor instead.
+func (*GetUserByIdResponse) Descriptor() ([]byte, []int) {
+	return file_api_user_user_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetUserByIdResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *GetUserByIdResponse) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *GetUserByIdResponse) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+type GetUserByIdRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserByIdRequest) Reset() {
+	*x = GetUserByIdRequest{}
+	mi := &file_api_user_user_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserByIdRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserByIdRequest) ProtoMessage() {}
+
+func (x *GetUserByIdRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_user_user_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserByIdRequest.ProtoReflect.Descriptor instead.
+func (*GetUserByIdRequest) Descriptor() ([]byte, []int) {
+	return file_api_user_user_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetUserByIdRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
 var File_api_user_user_proto protoreflect.FileDescriptor
 
 const file_api_user_user_proto_rawDesc = "" +
@@ -272,11 +376,18 @@ const file_api_user_user_proto_rawDesc = "" +
 	"\x11LoginUserResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n" +
 	"\asuccess\x18\x02 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x03 \x01(\tR\amessage2\x8c\x01\n" +
+	"\amessage\x18\x03 \x01(\tR\amessage\"O\n" +
+	"\x13GetUserByIdResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\"$\n" +
+	"\x12GetUserByIdRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id2\xd0\x01\n" +
 	"\vUserService\x12?\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x12<\n" +
-	"\tLoginUser\x12\x16.user.LoginUserRequest\x1a\x17.user.LoginUserResponseB\x1aZ\x18internal/gen/user;userpbb\x06proto3"
+	"\tLoginUser\x12\x16.user.LoginUserRequest\x1a\x17.user.LoginUserResponse\x12B\n" +
+	"\vGetUserById\x12\x18.user.GetUserByIdRequest\x1a\x19.user.GetUserByIdResponseB\x1aZ\x18internal/gen/user;userpbb\x06proto3"
 
 var (
 	file_api_user_user_proto_rawDescOnce sync.Once
@@ -290,20 +401,24 @@ func file_api_user_user_proto_rawDescGZIP() []byte {
 	return file_api_user_user_proto_rawDescData
 }
 
-var file_api_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_api_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_api_user_user_proto_goTypes = []any{
-	(*CreateUserRequest)(nil),  // 0: user.CreateUserRequest
-	(*CreateUserResponse)(nil), // 1: user.CreateUserResponse
-	(*LoginUserRequest)(nil),   // 2: user.LoginUserRequest
-	(*LoginUserResponse)(nil),  // 3: user.LoginUserResponse
+	(*CreateUserRequest)(nil),   // 0: user.CreateUserRequest
+	(*CreateUserResponse)(nil),  // 1: user.CreateUserResponse
+	(*LoginUserRequest)(nil),    // 2: user.LoginUserRequest
+	(*LoginUserResponse)(nil),   // 3: user.LoginUserResponse
+	(*GetUserByIdResponse)(nil), // 4: user.GetUserByIdResponse
+	(*GetUserByIdRequest)(nil),  // 5: user.GetUserByIdRequest
 }
 var file_api_user_user_proto_depIdxs = []int32{
 	0, // 0: user.UserService.CreateUser:input_type -> user.CreateUserRequest
 	2, // 1: user.UserService.LoginUser:input_type -> user.LoginUserRequest
-	1, // 2: user.UserService.CreateUser:output_type -> user.CreateUserResponse
-	3, // 3: user.UserService.LoginUser:output_type -> user.LoginUserResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	5, // 2: user.UserService.GetUserById:input_type -> user.GetUserByIdRequest
+	1, // 3: user.UserService.CreateUser:output_type -> user.CreateUserResponse
+	3, // 4: user.UserService.LoginUser:output_type -> user.LoginUserResponse
+	4, // 5: user.UserService.GetUserById:output_type -> user.GetUserByIdResponse
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -320,7 +435,7 @@ func file_api_user_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_user_user_proto_rawDesc), len(file_api_user_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
