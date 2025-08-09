@@ -50,11 +50,12 @@ message GetAccountByIdRequest {
 }
 
 message GetAccountByIdResponse {
-    string id = 1;
-    string name = 2;
-    string email = 3;
-    double balance = 4;
-    string currency = 5;
+    string accountId = 1;
+    string id = 2;
+    string name = 3;
+    string email = 4;
+    double balance = 5;
+    string currency = 6;
 }
 
 message TopUpBalanceRequest {
