@@ -23,6 +23,7 @@ const (
 	UserService_LoginUser_FullMethodName      = "/user.UserService/LoginUser"
 	UserService_GetUserById_FullMethodName    = "/user.UserService/GetUserById"
 	UserService_GetAccountById_FullMethodName = "/user.UserService/GetAccountById"
+	UserService_TopUpBalance_FullMethodName   = "/user.UserService/TopUpBalance"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -33,6 +34,7 @@ type UserServiceClient interface {
 	LoginUser(ctx context.Context, in *LoginUserRequest, opts ...grpc.CallOption) (*LoginUserResponse, error)
 	GetUserById(ctx context.Context, in *GetUserByIdRequest, opts ...grpc.CallOption) (*GetUserByIdResponse, error)
 	GetAccountById(ctx context.Context, in *GetAccountByIdRequest, opts ...grpc.CallOption) (*GetAccountByIdResponse, error)
+	TopUpBalance(ctx context.Context, in *TopUpBalanceRequest, opts ...grpc.CallOption) (*TopUpBalanceResponse, error)
 }
 
 type userServiceClient struct {
@@ -83,6 +85,16 @@ func (c *userServiceClient) GetAccountById(ctx context.Context, in *GetAccountBy
 	return out, nil
 }
 
+func (c *userServiceClient) TopUpBalance(ctx context.Context, in *TopUpBalanceRequest, opts ...grpc.CallOption) (*TopUpBalanceResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(TopUpBalanceResponse)
+	err := c.cc.Invoke(ctx, UserService_TopUpBalance_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
@@ -91,6 +103,7 @@ type UserServiceServer interface {
 	LoginUser(context.Context, *LoginUserRequest) (*LoginUserResponse, error)
 	GetUserById(context.Context, *GetUserByIdRequest) (*GetUserByIdResponse, error)
 	GetAccountById(context.Context, *GetAccountByIdRequest) (*GetAccountByIdResponse, error)
+	TopUpBalance(context.Context, *TopUpBalanceRequest) (*TopUpBalanceResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -112,6 +125,9 @@ func (UnimplementedUserServiceServer) GetUserById(context.Context, *GetUserByIdR
 }
 func (UnimplementedUserServiceServer) GetAccountById(context.Context, *GetAccountByIdRequest) (*GetAccountByIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccountById not implemented")
+}
+func (UnimplementedUserServiceServer) TopUpBalance(context.Context, *TopUpBalanceRequest) (*TopUpBalanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TopUpBalance not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -206,6 +222,24 @@ func _UserService_GetAccountById_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_TopUpBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TopUpBalanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).TopUpBalance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_TopUpBalance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).TopUpBalance(ctx, req.(*TopUpBalanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -228,6 +262,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAccountById",
 			Handler:    _UserService_GetAccountById_Handler,
+		},
+		{
+			MethodName: "TopUpBalance",
+			Handler:    _UserService_TopUpBalance_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
