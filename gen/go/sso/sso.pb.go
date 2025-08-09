@@ -403,11 +403,12 @@ func (x *GetAccountByIdRequest) GetId() string {
 
 type GetAccountByIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	Balance       float64                `protobuf:"fixed64,4,opt,name=balance,proto3" json:"balance,omitempty"`
-	Currency      string                 `protobuf:"bytes,5,opt,name=currency,proto3" json:"currency,omitempty"`
+	AccountId     string                 `protobuf:"bytes,1,opt,name=accountId,proto3" json:"accountId,omitempty"`
+	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
+	Balance       float64                `protobuf:"fixed64,5,opt,name=balance,proto3" json:"balance,omitempty"`
+	Currency      string                 `protobuf:"bytes,6,opt,name=currency,proto3" json:"currency,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -440,6 +441,13 @@ func (x *GetAccountByIdResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetAccountByIdResponse.ProtoReflect.Descriptor instead.
 func (*GetAccountByIdResponse) Descriptor() ([]byte, []int) {
 	return file_api_user_user_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetAccountByIdResponse) GetAccountId() string {
+	if x != nil {
+		return x.AccountId
+	}
+	return ""
 }
 
 func (x *GetAccountByIdResponse) GetId() string {
@@ -600,13 +608,14 @@ const file_api_user_user_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x03 \x01(\tR\x05email\"'\n" +
 	"\x15GetAccountByIdRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"\x88\x01\n" +
-	"\x16GetAccountByIdResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05email\x12\x18\n" +
-	"\abalance\x18\x04 \x01(\x01R\abalance\x12\x1a\n" +
-	"\bcurrency\x18\x05 \x01(\tR\bcurrency\"K\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\xa6\x01\n" +
+	"\x16GetAccountByIdResponse\x12\x1c\n" +
+	"\taccountId\x18\x01 \x01(\tR\taccountId\x12\x0e\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\x12\x14\n" +
+	"\x05email\x18\x04 \x01(\tR\x05email\x12\x18\n" +
+	"\abalance\x18\x05 \x01(\x01R\abalance\x12\x1a\n" +
+	"\bcurrency\x18\x06 \x01(\tR\bcurrency\"K\n" +
 	"\x13TopUpBalanceRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1e\n" +
 	"\n" +
