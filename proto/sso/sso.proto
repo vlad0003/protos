@@ -9,6 +9,7 @@ service UserService {
     rpc LoginUser (LoginUserRequest) returns (LoginUserResponse);
     rpc GetUserById (GetUserByIdRequest) returns (GetUserByIdResponse);
     rpc GetAccountById (GetAccountByIdRequest) returns (GetAccountByIdResponse);
+    rpc TopUpBalance (TopUpBalanceRequest) returns (TopUpBalanceResponse);
 }
 
 message CreateUserRequest {
@@ -54,4 +55,13 @@ message GetAccountByIdResponse {
     string email = 3;
     double balance = 4;
     string currency = 5;
+}
+
+message TopUpBalanceRequest {
+    string email = 1;
+    double moneyCount = 2;
+}
+
+message TopUpBalanceResponse {
+    bool success = 1;
 }
