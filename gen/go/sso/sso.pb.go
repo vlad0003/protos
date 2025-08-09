@@ -477,6 +477,102 @@ func (x *GetAccountByIdResponse) GetCurrency() string {
 	return ""
 }
 
+type TopUpBalanceRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	MoneyCount    float64                `protobuf:"fixed64,2,opt,name=moneyCount,proto3" json:"moneyCount,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TopUpBalanceRequest) Reset() {
+	*x = TopUpBalanceRequest{}
+	mi := &file_api_user_user_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TopUpBalanceRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TopUpBalanceRequest) ProtoMessage() {}
+
+func (x *TopUpBalanceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_user_user_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TopUpBalanceRequest.ProtoReflect.Descriptor instead.
+func (*TopUpBalanceRequest) Descriptor() ([]byte, []int) {
+	return file_api_user_user_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *TopUpBalanceRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *TopUpBalanceRequest) GetMoneyCount() float64 {
+	if x != nil {
+		return x.MoneyCount
+	}
+	return 0
+}
+
+type TopUpBalanceResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TopUpBalanceResponse) Reset() {
+	*x = TopUpBalanceResponse{}
+	mi := &file_api_user_user_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TopUpBalanceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TopUpBalanceResponse) ProtoMessage() {}
+
+func (x *TopUpBalanceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_api_user_user_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TopUpBalanceResponse.ProtoReflect.Descriptor instead.
+func (*TopUpBalanceResponse) Descriptor() ([]byte, []int) {
+	return file_api_user_user_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *TopUpBalanceResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 var File_api_user_user_proto protoreflect.FileDescriptor
 
 const file_api_user_user_proto_rawDesc = "" +
@@ -510,13 +606,21 @@ const file_api_user_user_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x03 \x01(\tR\x05email\x12\x18\n" +
 	"\abalance\x18\x04 \x01(\x01R\abalance\x12\x1a\n" +
-	"\bcurrency\x18\x05 \x01(\tR\bcurrency2\x9d\x02\n" +
+	"\bcurrency\x18\x05 \x01(\tR\bcurrency\"K\n" +
+	"\x13TopUpBalanceRequest\x12\x14\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1e\n" +
+	"\n" +
+	"moneyCount\x18\x02 \x01(\x01R\n" +
+	"moneyCount\"0\n" +
+	"\x14TopUpBalanceResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xe4\x02\n" +
 	"\vUserService\x12?\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x12<\n" +
 	"\tLoginUser\x12\x16.user.LoginUserRequest\x1a\x17.user.LoginUserResponse\x12B\n" +
 	"\vGetUserById\x12\x18.user.GetUserByIdRequest\x1a\x19.user.GetUserByIdResponse\x12K\n" +
-	"\x0eGetAccountById\x12\x1b.user.GetAccountByIdRequest\x1a\x1c.user.GetAccountByIdResponseB\x1aZ\x18internal/gen/user;userpbb\x06proto3"
+	"\x0eGetAccountById\x12\x1b.user.GetAccountByIdRequest\x1a\x1c.user.GetAccountByIdResponse\x12E\n" +
+	"\fTopUpBalance\x12\x19.user.TopUpBalanceRequest\x1a\x1a.user.TopUpBalanceResponseB\x1aZ\x18internal/gen/user;userpbb\x06proto3"
 
 var (
 	file_api_user_user_proto_rawDescOnce sync.Once
@@ -530,7 +634,7 @@ func file_api_user_user_proto_rawDescGZIP() []byte {
 	return file_api_user_user_proto_rawDescData
 }
 
-var file_api_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_api_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_api_user_user_proto_goTypes = []any{
 	(*CreateUserRequest)(nil),      // 0: user.CreateUserRequest
 	(*CreateUserResponse)(nil),     // 1: user.CreateUserResponse
@@ -540,18 +644,22 @@ var file_api_user_user_proto_goTypes = []any{
 	(*GetUserByIdResponse)(nil),    // 5: user.GetUserByIdResponse
 	(*GetAccountByIdRequest)(nil),  // 6: user.GetAccountByIdRequest
 	(*GetAccountByIdResponse)(nil), // 7: user.GetAccountByIdResponse
+	(*TopUpBalanceRequest)(nil),    // 8: user.TopUpBalanceRequest
+	(*TopUpBalanceResponse)(nil),   // 9: user.TopUpBalanceResponse
 }
 var file_api_user_user_proto_depIdxs = []int32{
 	0, // 0: user.UserService.CreateUser:input_type -> user.CreateUserRequest
 	2, // 1: user.UserService.LoginUser:input_type -> user.LoginUserRequest
 	4, // 2: user.UserService.GetUserById:input_type -> user.GetUserByIdRequest
 	6, // 3: user.UserService.GetAccountById:input_type -> user.GetAccountByIdRequest
-	1, // 4: user.UserService.CreateUser:output_type -> user.CreateUserResponse
-	3, // 5: user.UserService.LoginUser:output_type -> user.LoginUserResponse
-	5, // 6: user.UserService.GetUserById:output_type -> user.GetUserByIdResponse
-	7, // 7: user.UserService.GetAccountById:output_type -> user.GetAccountByIdResponse
-	4, // [4:8] is the sub-list for method output_type
-	0, // [0:4] is the sub-list for method input_type
+	8, // 4: user.UserService.TopUpBalance:input_type -> user.TopUpBalanceRequest
+	1, // 5: user.UserService.CreateUser:output_type -> user.CreateUserResponse
+	3, // 6: user.UserService.LoginUser:output_type -> user.LoginUserResponse
+	5, // 7: user.UserService.GetUserById:output_type -> user.GetUserByIdResponse
+	7, // 8: user.UserService.GetAccountById:output_type -> user.GetAccountByIdResponse
+	9, // 9: user.UserService.TopUpBalance:output_type -> user.TopUpBalanceResponse
+	5, // [5:10] is the sub-list for method output_type
+	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -568,7 +676,7 @@ func file_api_user_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_user_user_proto_rawDesc), len(file_api_user_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
