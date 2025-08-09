@@ -8,6 +8,7 @@ service UserService {
     rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
     rpc LoginUser (LoginUserRequest) returns (LoginUserResponse);
     rpc GetUserById (GetUserByIdRequest) returns (GetUserByIdResponse);
+    rpc GetAccountById (GetAccountByIdRequest) returns (GetAccountByIdResponse);
 }
 
 message CreateUserRequest {
@@ -33,12 +34,24 @@ message LoginUserResponse {
     string message = 3;
 }
 
+message GetUserByIdRequest {
+    string id = 1;
+}
+
 message GetUserByIdResponse {
     string id = 1;
     string name = 2;
     string email = 3;
 }
 
-message GetUserByIdRequest {
+message GetAccountByIdRequest {
     string id = 1;
+}
+
+message GetAccountByIdResponse {
+    string id = 1;
+    string name = 2;
+    string email = 3;
+    double balance = 4;
+    string currency = 5;
 }
