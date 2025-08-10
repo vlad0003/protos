@@ -19,12 +19,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UserService_CreateUser_FullMethodName      = "/user.UserService/CreateUser"
-	UserService_LoginUser_FullMethodName       = "/user.UserService/LoginUser"
-	UserService_GetUserById_FullMethodName     = "/user.UserService/GetUserById"
-	UserService_GetAccountById_FullMethodName  = "/user.UserService/GetAccountById"
-	UserService_DepositBalance_FullMethodName  = "/user.UserService/DepositBalance"
-	UserService_WithdrawBalance_FullMethodName = "/user.UserService/WithdrawBalance"
+	UserService_CreateUser_FullMethodName        = "/user.UserService/CreateUser"
+	UserService_LoginUser_FullMethodName         = "/user.UserService/LoginUser"
+	UserService_GetUserById_FullMethodName       = "/user.UserService/GetUserById"
+	UserService_GetAccountById_FullMethodName    = "/user.UserService/GetAccountById"
+	UserService_DepositBalance_FullMethodName    = "/user.UserService/DepositBalance"
+	UserService_WithdrawBalance_FullMethodName   = "/user.UserService/WithdrawBalance"
+	UserService_CreateTransaction_FullMethodName = "/user.UserService/CreateTransaction"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -37,6 +38,7 @@ type UserServiceClient interface {
 	GetAccountById(ctx context.Context, in *GetAccountByIdRequest, opts ...grpc.CallOption) (*GetAccountByIdResponse, error)
 	DepositBalance(ctx context.Context, in *DepositBalanceRequest, opts ...grpc.CallOption) (*DepositBalanceResponse, error)
 	WithdrawBalance(ctx context.Context, in *WithdrawBalanceRequest, opts ...grpc.CallOption) (*WithdrawBalanceResponse, error)
+	CreateTransaction(ctx context.Context, in *CreateTransactionRequest, opts ...grpc.CallOption) (*CreateTransactionResponse, error)
 }
 
 type userServiceClient struct {
@@ -107,6 +109,16 @@ func (c *userServiceClient) WithdrawBalance(ctx context.Context, in *WithdrawBal
 	return out, nil
 }
 
+func (c *userServiceClient) CreateTransaction(ctx context.Context, in *CreateTransactionRequest, opts ...grpc.CallOption) (*CreateTransactionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateTransactionResponse)
+	err := c.cc.Invoke(ctx, UserService_CreateTransaction_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
@@ -117,11 +129,13 @@ type UserServiceServer interface {
 	GetAccountById(context.Context, *GetAccountByIdRequest) (*GetAccountByIdResponse, error)
 	DepositBalance(context.Context, *DepositBalanceRequest) (*DepositBalanceResponse, error)
 	WithdrawBalance(context.Context, *WithdrawBalanceRequest) (*WithdrawBalanceResponse, error)
+	CreateTransaction(context.Context, *CreateTransactionRequest) (*CreateTransactionResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
 // UnimplementedUserServiceServer must be embedded to have
 // forward compatible implementations.
+//
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
 type UnimplementedUserServiceServer struct{}
@@ -143,6 +157,9 @@ func (UnimplementedUserServiceServer) DepositBalance(context.Context, *DepositBa
 }
 func (UnimplementedUserServiceServer) WithdrawBalance(context.Context, *WithdrawBalanceRequest) (*WithdrawBalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WithdrawBalance not implemented")
+}
+func (UnimplementedUserServiceServer) CreateTransaction(context.Context, *CreateTransactionRequest) (*CreateTransactionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTransaction not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -273,6 +290,24 @@ func _UserService_WithdrawBalance_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_CreateTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateTransactionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).CreateTransaction(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_CreateTransaction_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).CreateTransaction(ctx, req.(*CreateTransactionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -303,6 +338,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "WithdrawBalance",
 			Handler:    _UserService_WithdrawBalance_Handler,
+		},
+		{
+			MethodName: "CreateTransaction",
+			Handler:    _UserService_CreateTransaction_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
