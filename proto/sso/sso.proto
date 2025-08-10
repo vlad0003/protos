@@ -11,6 +11,7 @@ service UserService {
     rpc GetAccountById (GetAccountByIdRequest) returns (GetAccountByIdResponse);
     rpc DepositBalance (DepositBalanceRequest) returns (DepositBalanceResponse);
     rpc WithdrawBalance (WithdrawBalanceRequest) returns (WithdrawBalanceResponse);
+    rpc CreateTransaction (CreateTransactionRequest) returns (CreateTransactionResponse);
 }
 
 message CreateUserRequest {
@@ -75,4 +76,17 @@ message WithdrawBalanceRequest {
 
 message WithdrawBalanceResponse {
     bool success = 1;
+}
+
+message CreateTransactionRequest {
+    string fromAccountId = 1;
+    string toAccountId = 2;
+    string transactionType = 3;
+    double amount = 4;
+    string description = 5;
+}
+
+message CreateTransactionResponse {
+    string id = 1;
+    string status = 2;
 }
