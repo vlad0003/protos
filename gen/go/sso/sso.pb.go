@@ -487,7 +487,7 @@ func (x *GetAccountByIdResponse) GetCurrency() string {
 
 type DepositBalanceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	MoneyCount    float64                `protobuf:"fixed64,2,opt,name=moneyCount,proto3" json:"moneyCount,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -523,9 +523,9 @@ func (*DepositBalanceRequest) Descriptor() ([]byte, []int) {
 	return file_api_user_user_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *DepositBalanceRequest) GetEmail() string {
+func (x *DepositBalanceRequest) GetId() string {
 	if x != nil {
-		return x.Email
+		return x.Id
 	}
 	return ""
 }
@@ -583,7 +583,7 @@ func (x *DepositBalanceResponse) GetSuccess() bool {
 
 type WithdrawBalanceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	MoneyCount    float64                `protobuf:"fixed64,2,opt,name=moneyCount,proto3" json:"moneyCount,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -619,9 +619,9 @@ func (*WithdrawBalanceRequest) Descriptor() ([]byte, []int) {
 	return file_api_user_user_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *WithdrawBalanceRequest) GetEmail() string {
+func (x *WithdrawBalanceRequest) GetId() string {
 	if x != nil {
-		return x.Email
+		return x.Id
 	}
 	return ""
 }
@@ -711,16 +711,16 @@ const file_api_user_user_proto_rawDesc = "" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x04 \x01(\tR\x05email\x12\x18\n" +
 	"\abalance\x18\x05 \x01(\x01R\abalance\x12\x1a\n" +
-	"\bcurrency\x18\x06 \x01(\tR\bcurrency\"M\n" +
-	"\x15DepositBalanceRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1e\n" +
+	"\bcurrency\x18\x06 \x01(\tR\bcurrency\"G\n" +
+	"\x15DepositBalanceRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1e\n" +
 	"\n" +
 	"moneyCount\x18\x02 \x01(\x01R\n" +
 	"moneyCount\"2\n" +
 	"\x16DepositBalanceResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"N\n" +
-	"\x16WithdrawBalanceRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1e\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"H\n" +
+	"\x16WithdrawBalanceRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1e\n" +
 	"\n" +
 	"moneyCount\x18\x02 \x01(\x01R\n" +
 	"moneyCount\"3\n" +
