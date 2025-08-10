@@ -19,11 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UserService_CreateUser_FullMethodName     = "/user.UserService/CreateUser"
-	UserService_LoginUser_FullMethodName      = "/user.UserService/LoginUser"
-	UserService_GetUserById_FullMethodName    = "/user.UserService/GetUserById"
-	UserService_GetAccountById_FullMethodName = "/user.UserService/GetAccountById"
-	UserService_TopUpBalance_FullMethodName   = "/user.UserService/TopUpBalance"
+	UserService_CreateUser_FullMethodName      = "/user.UserService/CreateUser"
+	UserService_LoginUser_FullMethodName       = "/user.UserService/LoginUser"
+	UserService_GetUserById_FullMethodName     = "/user.UserService/GetUserById"
+	UserService_GetAccountById_FullMethodName  = "/user.UserService/GetAccountById"
+	UserService_DepositBalance_FullMethodName  = "/user.UserService/DepositBalance"
+	UserService_WithdrawBalance_FullMethodName = "/user.UserService/WithdrawBalance"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -34,7 +35,8 @@ type UserServiceClient interface {
 	LoginUser(ctx context.Context, in *LoginUserRequest, opts ...grpc.CallOption) (*LoginUserResponse, error)
 	GetUserById(ctx context.Context, in *GetUserByIdRequest, opts ...grpc.CallOption) (*GetUserByIdResponse, error)
 	GetAccountById(ctx context.Context, in *GetAccountByIdRequest, opts ...grpc.CallOption) (*GetAccountByIdResponse, error)
-	TopUpBalance(ctx context.Context, in *TopUpBalanceRequest, opts ...grpc.CallOption) (*TopUpBalanceResponse, error)
+	DepositBalance(ctx context.Context, in *DepositBalanceRequest, opts ...grpc.CallOption) (*DepositBalanceResponse, error)
+	WithdrawBalance(ctx context.Context, in *WithdrawBalanceRequest, opts ...grpc.CallOption) (*WithdrawBalanceResponse, error)
 }
 
 type userServiceClient struct {
@@ -85,10 +87,20 @@ func (c *userServiceClient) GetAccountById(ctx context.Context, in *GetAccountBy
 	return out, nil
 }
 
-func (c *userServiceClient) TopUpBalance(ctx context.Context, in *TopUpBalanceRequest, opts ...grpc.CallOption) (*TopUpBalanceResponse, error) {
+func (c *userServiceClient) DepositBalance(ctx context.Context, in *DepositBalanceRequest, opts ...grpc.CallOption) (*DepositBalanceResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(TopUpBalanceResponse)
-	err := c.cc.Invoke(ctx, UserService_TopUpBalance_FullMethodName, in, out, cOpts...)
+	out := new(DepositBalanceResponse)
+	err := c.cc.Invoke(ctx, UserService_DepositBalance_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) WithdrawBalance(ctx context.Context, in *WithdrawBalanceRequest, opts ...grpc.CallOption) (*WithdrawBalanceResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(WithdrawBalanceResponse)
+	err := c.cc.Invoke(ctx, UserService_WithdrawBalance_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -103,7 +115,8 @@ type UserServiceServer interface {
 	LoginUser(context.Context, *LoginUserRequest) (*LoginUserResponse, error)
 	GetUserById(context.Context, *GetUserByIdRequest) (*GetUserByIdResponse, error)
 	GetAccountById(context.Context, *GetAccountByIdRequest) (*GetAccountByIdResponse, error)
-	TopUpBalance(context.Context, *TopUpBalanceRequest) (*TopUpBalanceResponse, error)
+	DepositBalance(context.Context, *DepositBalanceRequest) (*DepositBalanceResponse, error)
+	WithdrawBalance(context.Context, *WithdrawBalanceRequest) (*WithdrawBalanceResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -126,8 +139,11 @@ func (UnimplementedUserServiceServer) GetUserById(context.Context, *GetUserByIdR
 func (UnimplementedUserServiceServer) GetAccountById(context.Context, *GetAccountByIdRequest) (*GetAccountByIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccountById not implemented")
 }
-func (UnimplementedUserServiceServer) TopUpBalance(context.Context, *TopUpBalanceRequest) (*TopUpBalanceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method TopUpBalance not implemented")
+func (UnimplementedUserServiceServer) DepositBalance(context.Context, *DepositBalanceRequest) (*DepositBalanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DepositBalance not implemented")
+}
+func (UnimplementedUserServiceServer) WithdrawBalance(context.Context, *WithdrawBalanceRequest) (*WithdrawBalanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method WithdrawBalance not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -222,20 +238,38 @@ func _UserService_GetAccountById_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_TopUpBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TopUpBalanceRequest)
+func _UserService_DepositBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DepositBalanceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).TopUpBalance(ctx, in)
+		return srv.(UserServiceServer).DepositBalance(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_TopUpBalance_FullMethodName,
+		FullMethod: UserService_DepositBalance_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).TopUpBalance(ctx, req.(*TopUpBalanceRequest))
+		return srv.(UserServiceServer).DepositBalance(ctx, req.(*DepositBalanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_WithdrawBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(WithdrawBalanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).WithdrawBalance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_WithdrawBalance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).WithdrawBalance(ctx, req.(*WithdrawBalanceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -264,8 +298,12 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _UserService_GetAccountById_Handler,
 		},
 		{
-			MethodName: "TopUpBalance",
-			Handler:    _UserService_TopUpBalance_Handler,
+			MethodName: "DepositBalance",
+			Handler:    _UserService_DepositBalance_Handler,
+		},
+		{
+			MethodName: "WithdrawBalance",
+			Handler:    _UserService_WithdrawBalance_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
