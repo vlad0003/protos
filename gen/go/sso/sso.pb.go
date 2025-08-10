@@ -485,7 +485,7 @@ func (x *GetAccountByIdResponse) GetCurrency() string {
 	return ""
 }
 
-type TopUpBalanceRequest struct {
+type DepositBalanceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	MoneyCount    float64                `protobuf:"fixed64,2,opt,name=moneyCount,proto3" json:"moneyCount,omitempty"`
@@ -493,20 +493,20 @@ type TopUpBalanceRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *TopUpBalanceRequest) Reset() {
-	*x = TopUpBalanceRequest{}
+func (x *DepositBalanceRequest) Reset() {
+	*x = DepositBalanceRequest{}
 	mi := &file_api_user_user_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TopUpBalanceRequest) String() string {
+func (x *DepositBalanceRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TopUpBalanceRequest) ProtoMessage() {}
+func (*DepositBalanceRequest) ProtoMessage() {}
 
-func (x *TopUpBalanceRequest) ProtoReflect() protoreflect.Message {
+func (x *DepositBalanceRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_api_user_user_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -518,46 +518,46 @@ func (x *TopUpBalanceRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TopUpBalanceRequest.ProtoReflect.Descriptor instead.
-func (*TopUpBalanceRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use DepositBalanceRequest.ProtoReflect.Descriptor instead.
+func (*DepositBalanceRequest) Descriptor() ([]byte, []int) {
 	return file_api_user_user_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *TopUpBalanceRequest) GetEmail() string {
+func (x *DepositBalanceRequest) GetEmail() string {
 	if x != nil {
 		return x.Email
 	}
 	return ""
 }
 
-func (x *TopUpBalanceRequest) GetMoneyCount() float64 {
+func (x *DepositBalanceRequest) GetMoneyCount() float64 {
 	if x != nil {
 		return x.MoneyCount
 	}
 	return 0
 }
 
-type TopUpBalanceResponse struct {
+type DepositBalanceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *TopUpBalanceResponse) Reset() {
-	*x = TopUpBalanceResponse{}
+func (x *DepositBalanceResponse) Reset() {
+	*x = DepositBalanceResponse{}
 	mi := &file_api_user_user_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TopUpBalanceResponse) String() string {
+func (x *DepositBalanceResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TopUpBalanceResponse) ProtoMessage() {}
+func (*DepositBalanceResponse) ProtoMessage() {}
 
-func (x *TopUpBalanceResponse) ProtoReflect() protoreflect.Message {
+func (x *DepositBalanceResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_api_user_user_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -569,12 +569,108 @@ func (x *TopUpBalanceResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TopUpBalanceResponse.ProtoReflect.Descriptor instead.
-func (*TopUpBalanceResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DepositBalanceResponse.ProtoReflect.Descriptor instead.
+func (*DepositBalanceResponse) Descriptor() ([]byte, []int) {
 	return file_api_user_user_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *TopUpBalanceResponse) GetSuccess() bool {
+func (x *DepositBalanceResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type WithdrawBalanceRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	MoneyCount    float64                `protobuf:"fixed64,2,opt,name=moneyCount,proto3" json:"moneyCount,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WithdrawBalanceRequest) Reset() {
+	*x = WithdrawBalanceRequest{}
+	mi := &file_api_user_user_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WithdrawBalanceRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WithdrawBalanceRequest) ProtoMessage() {}
+
+func (x *WithdrawBalanceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_user_user_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WithdrawBalanceRequest.ProtoReflect.Descriptor instead.
+func (*WithdrawBalanceRequest) Descriptor() ([]byte, []int) {
+	return file_api_user_user_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *WithdrawBalanceRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *WithdrawBalanceRequest) GetMoneyCount() float64 {
+	if x != nil {
+		return x.MoneyCount
+	}
+	return 0
+}
+
+type WithdrawBalanceResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WithdrawBalanceResponse) Reset() {
+	*x = WithdrawBalanceResponse{}
+	mi := &file_api_user_user_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WithdrawBalanceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WithdrawBalanceResponse) ProtoMessage() {}
+
+func (x *WithdrawBalanceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_api_user_user_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WithdrawBalanceResponse.ProtoReflect.Descriptor instead.
+func (*WithdrawBalanceResponse) Descriptor() ([]byte, []int) {
+	return file_api_user_user_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *WithdrawBalanceResponse) GetSuccess() bool {
 	if x != nil {
 		return x.Success
 	}
@@ -615,21 +711,29 @@ const file_api_user_user_proto_rawDesc = "" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x04 \x01(\tR\x05email\x12\x18\n" +
 	"\abalance\x18\x05 \x01(\x01R\abalance\x12\x1a\n" +
-	"\bcurrency\x18\x06 \x01(\tR\bcurrency\"K\n" +
-	"\x13TopUpBalanceRequest\x12\x14\n" +
+	"\bcurrency\x18\x06 \x01(\tR\bcurrency\"M\n" +
+	"\x15DepositBalanceRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1e\n" +
 	"\n" +
 	"moneyCount\x18\x02 \x01(\x01R\n" +
-	"moneyCount\"0\n" +
-	"\x14TopUpBalanceResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xe4\x02\n" +
+	"moneyCount\"2\n" +
+	"\x16DepositBalanceResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"N\n" +
+	"\x16WithdrawBalanceRequest\x12\x14\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1e\n" +
+	"\n" +
+	"moneyCount\x18\x02 \x01(\x01R\n" +
+	"moneyCount\"3\n" +
+	"\x17WithdrawBalanceResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xba\x03\n" +
 	"\vUserService\x12?\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x12<\n" +
 	"\tLoginUser\x12\x16.user.LoginUserRequest\x1a\x17.user.LoginUserResponse\x12B\n" +
 	"\vGetUserById\x12\x18.user.GetUserByIdRequest\x1a\x19.user.GetUserByIdResponse\x12K\n" +
-	"\x0eGetAccountById\x12\x1b.user.GetAccountByIdRequest\x1a\x1c.user.GetAccountByIdResponse\x12E\n" +
-	"\fTopUpBalance\x12\x19.user.TopUpBalanceRequest\x1a\x1a.user.TopUpBalanceResponseB\x1aZ\x18internal/gen/user;userpbb\x06proto3"
+	"\x0eGetAccountById\x12\x1b.user.GetAccountByIdRequest\x1a\x1c.user.GetAccountByIdResponse\x12K\n" +
+	"\x0eDepositBalance\x12\x1b.user.DepositBalanceRequest\x1a\x1c.user.DepositBalanceResponse\x12N\n" +
+	"\x0fWithdrawBalance\x12\x1c.user.WithdrawBalanceRequest\x1a\x1d.user.WithdrawBalanceResponseB\x1aZ\x18internal/gen/user;userpbb\x06proto3"
 
 var (
 	file_api_user_user_proto_rawDescOnce sync.Once
@@ -643,35 +747,39 @@ func file_api_user_user_proto_rawDescGZIP() []byte {
 	return file_api_user_user_proto_rawDescData
 }
 
-var file_api_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_api_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_api_user_user_proto_goTypes = []any{
-	(*CreateUserRequest)(nil),      // 0: user.CreateUserRequest
-	(*CreateUserResponse)(nil),     // 1: user.CreateUserResponse
-	(*LoginUserRequest)(nil),       // 2: user.LoginUserRequest
-	(*LoginUserResponse)(nil),      // 3: user.LoginUserResponse
-	(*GetUserByIdRequest)(nil),     // 4: user.GetUserByIdRequest
-	(*GetUserByIdResponse)(nil),    // 5: user.GetUserByIdResponse
-	(*GetAccountByIdRequest)(nil),  // 6: user.GetAccountByIdRequest
-	(*GetAccountByIdResponse)(nil), // 7: user.GetAccountByIdResponse
-	(*TopUpBalanceRequest)(nil),    // 8: user.TopUpBalanceRequest
-	(*TopUpBalanceResponse)(nil),   // 9: user.TopUpBalanceResponse
+	(*CreateUserRequest)(nil),       // 0: user.CreateUserRequest
+	(*CreateUserResponse)(nil),      // 1: user.CreateUserResponse
+	(*LoginUserRequest)(nil),        // 2: user.LoginUserRequest
+	(*LoginUserResponse)(nil),       // 3: user.LoginUserResponse
+	(*GetUserByIdRequest)(nil),      // 4: user.GetUserByIdRequest
+	(*GetUserByIdResponse)(nil),     // 5: user.GetUserByIdResponse
+	(*GetAccountByIdRequest)(nil),   // 6: user.GetAccountByIdRequest
+	(*GetAccountByIdResponse)(nil),  // 7: user.GetAccountByIdResponse
+	(*DepositBalanceRequest)(nil),   // 8: user.DepositBalanceRequest
+	(*DepositBalanceResponse)(nil),  // 9: user.DepositBalanceResponse
+	(*WithdrawBalanceRequest)(nil),  // 10: user.WithdrawBalanceRequest
+	(*WithdrawBalanceResponse)(nil), // 11: user.WithdrawBalanceResponse
 }
 var file_api_user_user_proto_depIdxs = []int32{
-	0, // 0: user.UserService.CreateUser:input_type -> user.CreateUserRequest
-	2, // 1: user.UserService.LoginUser:input_type -> user.LoginUserRequest
-	4, // 2: user.UserService.GetUserById:input_type -> user.GetUserByIdRequest
-	6, // 3: user.UserService.GetAccountById:input_type -> user.GetAccountByIdRequest
-	8, // 4: user.UserService.TopUpBalance:input_type -> user.TopUpBalanceRequest
-	1, // 5: user.UserService.CreateUser:output_type -> user.CreateUserResponse
-	3, // 6: user.UserService.LoginUser:output_type -> user.LoginUserResponse
-	5, // 7: user.UserService.GetUserById:output_type -> user.GetUserByIdResponse
-	7, // 8: user.UserService.GetAccountById:output_type -> user.GetAccountByIdResponse
-	9, // 9: user.UserService.TopUpBalance:output_type -> user.TopUpBalanceResponse
-	5, // [5:10] is the sub-list for method output_type
-	0, // [0:5] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0,  // 0: user.UserService.CreateUser:input_type -> user.CreateUserRequest
+	2,  // 1: user.UserService.LoginUser:input_type -> user.LoginUserRequest
+	4,  // 2: user.UserService.GetUserById:input_type -> user.GetUserByIdRequest
+	6,  // 3: user.UserService.GetAccountById:input_type -> user.GetAccountByIdRequest
+	8,  // 4: user.UserService.DepositBalance:input_type -> user.DepositBalanceRequest
+	10, // 5: user.UserService.WithdrawBalance:input_type -> user.WithdrawBalanceRequest
+	1,  // 6: user.UserService.CreateUser:output_type -> user.CreateUserResponse
+	3,  // 7: user.UserService.LoginUser:output_type -> user.LoginUserResponse
+	5,  // 8: user.UserService.GetUserById:output_type -> user.GetUserByIdResponse
+	7,  // 9: user.UserService.GetAccountById:output_type -> user.GetAccountByIdResponse
+	9,  // 10: user.UserService.DepositBalance:output_type -> user.DepositBalanceResponse
+	11, // 11: user.UserService.WithdrawBalance:output_type -> user.WithdrawBalanceResponse
+	6,  // [6:12] is the sub-list for method output_type
+	0,  // [0:6] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_api_user_user_proto_init() }
@@ -685,7 +793,7 @@ func file_api_user_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_user_user_proto_rawDesc), len(file_api_user_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
