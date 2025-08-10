@@ -60,7 +60,7 @@ message GetAccountByIdResponse {
 }
 
 message DepositBalanceRequest {
-    string email = 1;
+    string id = 1;
     double moneyCount = 2;
 }
 
@@ -69,7 +69,7 @@ message DepositBalanceResponse {
 }
 
 message WithdrawBalanceRequest {
-    string email = 1;
+    string id = 1;
     double moneyCount = 2;
 }
 
