@@ -9,7 +9,8 @@ service UserService {
     rpc LoginUser (LoginUserRequest) returns (LoginUserResponse);
     rpc GetUserById (GetUserByIdRequest) returns (GetUserByIdResponse);
     rpc GetAccountById (GetAccountByIdRequest) returns (GetAccountByIdResponse);
-    rpc TopUpBalance (TopUpBalanceRequest) returns (TopUpBalanceResponse);
+    rpc DepositBalance (DepositBalanceRequest) returns (DepositBalanceResponse);
+    rpc WithdrawBalance (WithdrawBalanceRequest) returns (WithdrawBalanceResponse);
 }
 
 message CreateUserRequest {
@@ -58,11 +59,20 @@ message GetAccountByIdResponse {
     string currency = 6;
 }
 
-message TopUpBalanceRequest {
+message DepositBalanceRequest {
     string email = 1;
     double moneyCount = 2;
 }
 
-message TopUpBalanceResponse {
+message DepositBalanceResponse {
+    bool success = 1;
+}
+
+message WithdrawBalanceRequest {
+    string email = 1;
+    double moneyCount = 2;
+}
+
+message WithdrawBalanceResponse {
     bool success = 1;
 }
