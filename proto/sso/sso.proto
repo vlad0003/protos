@@ -8,6 +8,7 @@ service UserService {
     rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
     rpc LoginUser (LoginUserRequest) returns (LoginUserResponse);
     rpc GetUserById (GetUserByIdRequest) returns (GetUserByIdResponse);
+    rpc GetUserByEmail (GetUserByEmailRequest) returns (GetUserByEmailResponse);
     rpc GetAccountById (GetAccountByIdRequest) returns (GetAccountByIdResponse);
     rpc DepositBalance (DepositBalanceRequest) returns (DepositBalanceResponse);
     rpc WithdrawBalance (WithdrawBalanceRequest) returns (WithdrawBalanceResponse);
@@ -24,6 +25,7 @@ message CreateUserResponse {
     string id = 1;
     string name = 2;
     string email = 3;
+    string secret_key = 4;
 }
 
 message LoginUserRequest {
@@ -42,6 +44,16 @@ message GetUserByIdRequest {
 }
 
 message GetUserByIdResponse {
+    string id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+message GetUserByEmailRequest {
+    string email = 1;
+}
+
+message GetUserByEmailResponse {
     string id = 1;
     string name = 2;
     string email = 3;
