@@ -1128,7 +1128,7 @@ const file_api_user_user_proto_rawDesc = "" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12$\n" +
 	"\rfromAccountID\x18\x05 \x01(\tR\rfromAccountID\x12 \n" +
 	"\vtoAccountID\x18\x06 \x01(\tR\vtoAccountID\x12\x1c\n" +
-	"\tcreatedAt\x18\a \x01(\tR\tcreatedAt2\xdd\x04\n" +
+	"\tcreatedAt\x18\a \x01(\tR\tcreatedAt2\xb6\x05\n" +
 	"\vUserService\x12?\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x12<\n" +
@@ -1138,7 +1138,8 @@ const file_api_user_user_proto_rawDesc = "" +
 	"\x0eGetAccountById\x12\x1b.user.GetAccountByIdRequest\x1a\x1c.user.GetAccountByIdResponse\x12K\n" +
 	"\x0eDepositBalance\x12\x1b.user.DepositBalanceRequest\x1a\x1c.user.DepositBalanceResponse\x12N\n" +
 	"\x0fWithdrawBalance\x12\x1c.user.WithdrawBalanceRequest\x1a\x1d.user.WithdrawBalanceResponse\x12T\n" +
-	"\x11CreateTransaction\x12\x1e.user.CreateTransactionRequest\x1a\x1f.user.CreateTransactionResponseB\x1aZ\x18internal/gen/user;userpbb\x06proto3"
+	"\x11CreateTransaction\x12\x1e.user.CreateTransactionRequest\x1a\x1f.user.CreateTransactionResponse\x12W\n" +
+	"\x12GetTransactionById\x12\x1f.user.GetTransactionByIdRequest\x1a .user.GetTransactionByIdResponseB\x1aZ\x18internal/gen/user;userpbb\x06proto3"
 
 var (
 	file_api_user_user_proto_rawDescOnce sync.Once
@@ -1182,16 +1183,18 @@ var file_api_user_user_proto_depIdxs = []int32{
 	10, // 5: user.UserService.DepositBalance:input_type -> user.DepositBalanceRequest
 	12, // 6: user.UserService.WithdrawBalance:input_type -> user.WithdrawBalanceRequest
 	14, // 7: user.UserService.CreateTransaction:input_type -> user.CreateTransactionRequest
-	1,  // 8: user.UserService.CreateUser:output_type -> user.CreateUserResponse
-	3,  // 9: user.UserService.LoginUser:output_type -> user.LoginUserResponse
-	5,  // 10: user.UserService.GetUserById:output_type -> user.GetUserByIdResponse
-	7,  // 11: user.UserService.GetUserByEmail:output_type -> user.GetUserByEmailResponse
-	9,  // 12: user.UserService.GetAccountById:output_type -> user.GetAccountByIdResponse
-	11, // 13: user.UserService.DepositBalance:output_type -> user.DepositBalanceResponse
-	13, // 14: user.UserService.WithdrawBalance:output_type -> user.WithdrawBalanceResponse
-	15, // 15: user.UserService.CreateTransaction:output_type -> user.CreateTransactionResponse
-	8,  // [8:16] is the sub-list for method output_type
-	0,  // [0:8] is the sub-list for method input_type
+	16, // 8: user.UserService.GetTransactionById:input_type -> user.GetTransactionByIdRequest
+	1,  // 9: user.UserService.CreateUser:output_type -> user.CreateUserResponse
+	3,  // 10: user.UserService.LoginUser:output_type -> user.LoginUserResponse
+	5,  // 11: user.UserService.GetUserById:output_type -> user.GetUserByIdResponse
+	7,  // 12: user.UserService.GetUserByEmail:output_type -> user.GetUserByEmailResponse
+	9,  // 13: user.UserService.GetAccountById:output_type -> user.GetAccountByIdResponse
+	11, // 14: user.UserService.DepositBalance:output_type -> user.DepositBalanceResponse
+	13, // 15: user.UserService.WithdrawBalance:output_type -> user.WithdrawBalanceResponse
+	15, // 16: user.UserService.CreateTransaction:output_type -> user.CreateTransactionResponse
+	17, // 17: user.UserService.GetTransactionById:output_type -> user.GetTransactionByIdResponse
+	9,  // [9:18] is the sub-list for method output_type
+	0,  // [0:9] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
