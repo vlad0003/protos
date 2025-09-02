@@ -7,11 +7,12 @@
 package userpb
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -204,8 +205,8 @@ func (x *LoginUserRequest) GetPassword() string {
 type LoginUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Success       bool                   `protobuf:"varint,2,opt,name=success,proto3" json:"success,omitempty"`
-	Message       string                 `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
+	Name          string                 `protobuf:"varint,2,opt,name=name,proto3" json:"name,omitempty"`
+	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -243,20 +244,6 @@ func (*LoginUserResponse) Descriptor() ([]byte, []int) {
 func (x *LoginUserResponse) GetId() string {
 	if x != nil {
 		return x.Id
-	}
-	return ""
-}
-
-func (x *LoginUserResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-func (x *LoginUserResponse) GetMessage() string {
-	if x != nil {
-		return x.Message
 	}
 	return ""
 }
@@ -516,7 +503,7 @@ func (x *GetAccountByIdRequest) GetId() string {
 type GetAccountByIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	AccountId     string                 `protobuf:"bytes,1,opt,name=accountId,proto3" json:"accountId,omitempty"`
-	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
 	Balance       float64                `protobuf:"fixed64,5,opt,name=balance,proto3" json:"balance,omitempty"`
@@ -558,13 +545,6 @@ func (*GetAccountByIdResponse) Descriptor() ([]byte, []int) {
 func (x *GetAccountByIdResponse) GetAccountId() string {
 	if x != nil {
 		return x.AccountId
-	}
-	return ""
-}
-
-func (x *GetAccountByIdResponse) GetId() string {
-	if x != nil {
-		return x.Id
 	}
 	return ""
 }
