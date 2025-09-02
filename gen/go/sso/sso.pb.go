@@ -204,8 +204,8 @@ func (x *LoginUserRequest) GetPassword() string {
 type LoginUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Success       bool                   `protobuf:"varint,2,opt,name=success,proto3" json:"success,omitempty"`
-	Message       string                 `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -247,16 +247,16 @@ func (x *LoginUserResponse) GetId() string {
 	return ""
 }
 
-func (x *LoginUserResponse) GetSuccess() bool {
+func (x *LoginUserResponse) GetName() string {
 	if x != nil {
-		return x.Success
+		return x.Name
 	}
-	return false
+	return ""
 }
 
-func (x *LoginUserResponse) GetMessage() string {
+func (x *LoginUserResponse) GetEmail() string {
 	if x != nil {
-		return x.Message
+		return x.Email
 	}
 	return ""
 }
@@ -1070,11 +1070,11 @@ const file_api_user_user_proto_rawDesc = "" +
 	"secret_key\x18\x04 \x01(\tR\tsecretKey\"D\n" +
 	"\x10LoginUserRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"W\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"M\n" +
 	"\x11LoginUserResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n" +
-	"\asuccess\x18\x02 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x03 \x01(\tR\amessage\"$\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\"$\n" +
 	"\x12GetUserByIdRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"O\n" +
 	"\x13GetUserByIdResponse\x12\x0e\n" +
