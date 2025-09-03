@@ -112,8 +112,9 @@ message GetTransactionByIdResponse {
     string id = 1;
 	string type = 2;
 	double amount = 3;
-	string description = 4;
-	string fromAccountID = 5;
-	string toAccountID = 6;
-	string createdAt = 7;
+    string status = 4;
+	string createdAt = 5;
+	string fromAccountID = 6;
+	string toAccountID = 7;
+	string description = 8;
 }
