@@ -966,10 +966,11 @@ type GetTransactionByIdResponse struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Type          string                 `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
 	Amount        float64                `protobuf:"fixed64,3,opt,name=amount,proto3" json:"amount,omitempty"`
-	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	FromAccountID string                 `protobuf:"bytes,5,opt,name=fromAccountID,proto3" json:"fromAccountID,omitempty"`
-	ToAccountID   string                 `protobuf:"bytes,6,opt,name=toAccountID,proto3" json:"toAccountID,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,7,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	Status        string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	FromAccountID string                 `protobuf:"bytes,6,opt,name=fromAccountID,proto3" json:"fromAccountID,omitempty"`
+	ToAccountID   string                 `protobuf:"bytes,7,opt,name=toAccountID,proto3" json:"toAccountID,omitempty"`
+	Description   string                 `protobuf:"bytes,8,opt,name=description,proto3" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1025,9 +1026,16 @@ func (x *GetTransactionByIdResponse) GetAmount() float64 {
 	return 0
 }
 
-func (x *GetTransactionByIdResponse) GetDescription() string {
+func (x *GetTransactionByIdResponse) GetStatus() string {
 	if x != nil {
-		return x.Description
+		return x.Status
+	}
+	return ""
+}
+
+func (x *GetTransactionByIdResponse) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
 	}
 	return ""
 }
@@ -1046,9 +1054,9 @@ func (x *GetTransactionByIdResponse) GetToAccountID() string {
 	return ""
 }
 
-func (x *GetTransactionByIdResponse) GetCreatedAt() string {
+func (x *GetTransactionByIdResponse) GetDescription() string {
 	if x != nil {
-		return x.CreatedAt
+		return x.Description
 	}
 	return ""
 }
@@ -1120,15 +1128,16 @@ const file_api_user_user_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\tR\x06status\"+\n" +
 	"\x19GetTransactionByIdRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"\xe0\x01\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\xf8\x01\n" +
 	"\x1aGetTransactionByIdResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\tR\x04type\x12\x16\n" +
-	"\x06amount\x18\x03 \x01(\x01R\x06amount\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12$\n" +
-	"\rfromAccountID\x18\x05 \x01(\tR\rfromAccountID\x12 \n" +
-	"\vtoAccountID\x18\x06 \x01(\tR\vtoAccountID\x12\x1c\n" +
-	"\tcreatedAt\x18\a \x01(\tR\tcreatedAt2\xb6\x05\n" +
+	"\x06amount\x18\x03 \x01(\x01R\x06amount\x12\x16\n" +
+	"\x06status\x18\x04 \x01(\tR\x06status\x12\x1c\n" +
+	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAt\x12$\n" +
+	"\rfromAccountID\x18\x06 \x01(\tR\rfromAccountID\x12 \n" +
+	"\vtoAccountID\x18\a \x01(\tR\vtoAccountID\x12 \n" +
+	"\vdescription\x18\b \x01(\tR\vdescription2\xb6\x05\n" +
 	"\vUserService\x12?\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x12<\n" +
