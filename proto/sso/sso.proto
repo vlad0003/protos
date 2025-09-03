@@ -109,6 +109,18 @@ message GetTransactionByIdRequest {
 }
 
 message GetTransactionByIdResponse {
+    Transaction transaction = 1;
+}
+
+message GetTransactionsByAccountIdRequest {
+    string id = 1;
+}
+
+message GetTransactionsByAccountIdResponse {
+    repeated Transaction transactions = 1;
+}
+
+message Transaction {
     string id = 1;
 	string type = 2;
 	double amount = 3;
