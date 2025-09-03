@@ -963,14 +963,7 @@ func (x *GetTransactionByIdRequest) GetId() string {
 
 type GetTransactionByIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Type          string                 `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
-	Amount        float64                `protobuf:"fixed64,3,opt,name=amount,proto3" json:"amount,omitempty"`
-	Status        string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	FromAccountID string                 `protobuf:"bytes,6,opt,name=fromAccountID,proto3" json:"fromAccountID,omitempty"`
-	ToAccountID   string                 `protobuf:"bytes,7,opt,name=toAccountID,proto3" json:"toAccountID,omitempty"`
-	Description   string                 `protobuf:"bytes,8,opt,name=description,proto3" json:"description,omitempty"`
+	Transaction   *Transaction           `protobuf:"bytes,1,opt,name=transaction,proto3" json:"transaction,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1005,56 +998,195 @@ func (*GetTransactionByIdResponse) Descriptor() ([]byte, []int) {
 	return file_api_user_user_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *GetTransactionByIdResponse) GetId() string {
+func (x *GetTransactionByIdResponse) GetTransaction() *Transaction {
+	if x != nil {
+		return x.Transaction
+	}
+	return nil
+}
+
+type GetTransactionsByAccountIdRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTransactionsByAccountIdRequest) Reset() {
+	*x = GetTransactionsByAccountIdRequest{}
+	mi := &file_api_user_user_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTransactionsByAccountIdRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTransactionsByAccountIdRequest) ProtoMessage() {}
+
+func (x *GetTransactionsByAccountIdRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_user_user_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTransactionsByAccountIdRequest.ProtoReflect.Descriptor instead.
+func (*GetTransactionsByAccountIdRequest) Descriptor() ([]byte, []int) {
+	return file_api_user_user_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetTransactionsByAccountIdRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
 	return ""
 }
 
-func (x *GetTransactionByIdResponse) GetType() string {
+type GetTransactionsByAccountIdResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Transactions  []*Transaction         `protobuf:"bytes,1,rep,name=transactions,proto3" json:"transactions,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTransactionsByAccountIdResponse) Reset() {
+	*x = GetTransactionsByAccountIdResponse{}
+	mi := &file_api_user_user_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTransactionsByAccountIdResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTransactionsByAccountIdResponse) ProtoMessage() {}
+
+func (x *GetTransactionsByAccountIdResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_api_user_user_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTransactionsByAccountIdResponse.ProtoReflect.Descriptor instead.
+func (*GetTransactionsByAccountIdResponse) Descriptor() ([]byte, []int) {
+	return file_api_user_user_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *GetTransactionsByAccountIdResponse) GetTransactions() []*Transaction {
+	if x != nil {
+		return x.Transactions
+	}
+	return nil
+}
+
+type Transaction struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Type          string                 `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
+	Amount        float64                `protobuf:"fixed64,3,opt,name=amount,proto3" json:"amount,omitempty"`
+	Status        string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	FromAccountID string                 `protobuf:"bytes,6,opt,name=fromAccountID,proto3" json:"fromAccountID,omitempty"`
+	ToAccountID   string                 `protobuf:"bytes,7,opt,name=toAccountID,proto3" json:"toAccountID,omitempty"`
+	Description   string                 `protobuf:"bytes,8,opt,name=description,proto3" json:"description,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Transaction) Reset() {
+	*x = Transaction{}
+	mi := &file_api_user_user_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Transaction) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Transaction) ProtoMessage() {}
+
+func (x *Transaction) ProtoReflect() protoreflect.Message {
+	mi := &file_api_user_user_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Transaction.ProtoReflect.Descriptor instead.
+func (*Transaction) Descriptor() ([]byte, []int) {
+	return file_api_user_user_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *Transaction) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Transaction) GetType() string {
 	if x != nil {
 		return x.Type
 	}
 	return ""
 }
 
-func (x *GetTransactionByIdResponse) GetAmount() float64 {
+func (x *Transaction) GetAmount() float64 {
 	if x != nil {
 		return x.Amount
 	}
 	return 0
 }
 
-func (x *GetTransactionByIdResponse) GetStatus() string {
+func (x *Transaction) GetStatus() string {
 	if x != nil {
 		return x.Status
 	}
 	return ""
 }
 
-func (x *GetTransactionByIdResponse) GetCreatedAt() string {
+func (x *Transaction) GetCreatedAt() string {
 	if x != nil {
 		return x.CreatedAt
 	}
 	return ""
 }
 
-func (x *GetTransactionByIdResponse) GetFromAccountID() string {
+func (x *Transaction) GetFromAccountID() string {
 	if x != nil {
 		return x.FromAccountID
 	}
 	return ""
 }
 
-func (x *GetTransactionByIdResponse) GetToAccountID() string {
+func (x *Transaction) GetToAccountID() string {
 	if x != nil {
 		return x.ToAccountID
 	}
 	return ""
 }
 
-func (x *GetTransactionByIdResponse) GetDescription() string {
+func (x *Transaction) GetDescription() string {
 	if x != nil {
 		return x.Description
 	}
@@ -1128,8 +1260,14 @@ const file_api_user_user_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\tR\x06status\"+\n" +
 	"\x19GetTransactionByIdRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"\xf8\x01\n" +
-	"\x1aGetTransactionByIdResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"Q\n" +
+	"\x1aGetTransactionByIdResponse\x123\n" +
+	"\vtransaction\x18\x01 \x01(\v2\x11.user.TransactionR\vtransaction\"3\n" +
+	"!GetTransactionsByAccountIdRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"[\n" +
+	"\"GetTransactionsByAccountIdResponse\x125\n" +
+	"\ftransactions\x18\x01 \x03(\v2\x11.user.TransactionR\ftransactions\"\xe9\x01\n" +
+	"\vTransaction\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\tR\x04type\x12\x16\n" +
 	"\x06amount\x18\x03 \x01(\x01R\x06amount\x12\x16\n" +
@@ -1162,51 +1300,56 @@ func file_api_user_user_proto_rawDescGZIP() []byte {
 	return file_api_user_user_proto_rawDescData
 }
 
-var file_api_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_api_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
 var file_api_user_user_proto_goTypes = []any{
-	(*CreateUserRequest)(nil),          // 0: user.CreateUserRequest
-	(*CreateUserResponse)(nil),         // 1: user.CreateUserResponse
-	(*LoginUserRequest)(nil),           // 2: user.LoginUserRequest
-	(*LoginUserResponse)(nil),          // 3: user.LoginUserResponse
-	(*GetUserByIdRequest)(nil),         // 4: user.GetUserByIdRequest
-	(*GetUserByIdResponse)(nil),        // 5: user.GetUserByIdResponse
-	(*GetUserByEmailRequest)(nil),      // 6: user.GetUserByEmailRequest
-	(*GetUserByEmailResponse)(nil),     // 7: user.GetUserByEmailResponse
-	(*GetAccountByIdRequest)(nil),      // 8: user.GetAccountByIdRequest
-	(*GetAccountByIdResponse)(nil),     // 9: user.GetAccountByIdResponse
-	(*DepositBalanceRequest)(nil),      // 10: user.DepositBalanceRequest
-	(*DepositBalanceResponse)(nil),     // 11: user.DepositBalanceResponse
-	(*WithdrawBalanceRequest)(nil),     // 12: user.WithdrawBalanceRequest
-	(*WithdrawBalanceResponse)(nil),    // 13: user.WithdrawBalanceResponse
-	(*CreateTransactionRequest)(nil),   // 14: user.CreateTransactionRequest
-	(*CreateTransactionResponse)(nil),  // 15: user.CreateTransactionResponse
-	(*GetTransactionByIdRequest)(nil),  // 16: user.GetTransactionByIdRequest
-	(*GetTransactionByIdResponse)(nil), // 17: user.GetTransactionByIdResponse
+	(*CreateUserRequest)(nil),                  // 0: user.CreateUserRequest
+	(*CreateUserResponse)(nil),                 // 1: user.CreateUserResponse
+	(*LoginUserRequest)(nil),                   // 2: user.LoginUserRequest
+	(*LoginUserResponse)(nil),                  // 3: user.LoginUserResponse
+	(*GetUserByIdRequest)(nil),                 // 4: user.GetUserByIdRequest
+	(*GetUserByIdResponse)(nil),                // 5: user.GetUserByIdResponse
+	(*GetUserByEmailRequest)(nil),              // 6: user.GetUserByEmailRequest
+	(*GetUserByEmailResponse)(nil),             // 7: user.GetUserByEmailResponse
+	(*GetAccountByIdRequest)(nil),              // 8: user.GetAccountByIdRequest
+	(*GetAccountByIdResponse)(nil),             // 9: user.GetAccountByIdResponse
+	(*DepositBalanceRequest)(nil),              // 10: user.DepositBalanceRequest
+	(*DepositBalanceResponse)(nil),             // 11: user.DepositBalanceResponse
+	(*WithdrawBalanceRequest)(nil),             // 12: user.WithdrawBalanceRequest
+	(*WithdrawBalanceResponse)(nil),            // 13: user.WithdrawBalanceResponse
+	(*CreateTransactionRequest)(nil),           // 14: user.CreateTransactionRequest
+	(*CreateTransactionResponse)(nil),          // 15: user.CreateTransactionResponse
+	(*GetTransactionByIdRequest)(nil),          // 16: user.GetTransactionByIdRequest
+	(*GetTransactionByIdResponse)(nil),         // 17: user.GetTransactionByIdResponse
+	(*GetTransactionsByAccountIdRequest)(nil),  // 18: user.GetTransactionsByAccountIdRequest
+	(*GetTransactionsByAccountIdResponse)(nil), // 19: user.GetTransactionsByAccountIdResponse
+	(*Transaction)(nil),                        // 20: user.Transaction
 }
 var file_api_user_user_proto_depIdxs = []int32{
-	0,  // 0: user.UserService.CreateUser:input_type -> user.CreateUserRequest
-	2,  // 1: user.UserService.LoginUser:input_type -> user.LoginUserRequest
-	4,  // 2: user.UserService.GetUserById:input_type -> user.GetUserByIdRequest
-	6,  // 3: user.UserService.GetUserByEmail:input_type -> user.GetUserByEmailRequest
-	8,  // 4: user.UserService.GetAccountById:input_type -> user.GetAccountByIdRequest
-	10, // 5: user.UserService.DepositBalance:input_type -> user.DepositBalanceRequest
-	12, // 6: user.UserService.WithdrawBalance:input_type -> user.WithdrawBalanceRequest
-	14, // 7: user.UserService.CreateTransaction:input_type -> user.CreateTransactionRequest
-	16, // 8: user.UserService.GetTransactionById:input_type -> user.GetTransactionByIdRequest
-	1,  // 9: user.UserService.CreateUser:output_type -> user.CreateUserResponse
-	3,  // 10: user.UserService.LoginUser:output_type -> user.LoginUserResponse
-	5,  // 11: user.UserService.GetUserById:output_type -> user.GetUserByIdResponse
-	7,  // 12: user.UserService.GetUserByEmail:output_type -> user.GetUserByEmailResponse
-	9,  // 13: user.UserService.GetAccountById:output_type -> user.GetAccountByIdResponse
-	11, // 14: user.UserService.DepositBalance:output_type -> user.DepositBalanceResponse
-	13, // 15: user.UserService.WithdrawBalance:output_type -> user.WithdrawBalanceResponse
-	15, // 16: user.UserService.CreateTransaction:output_type -> user.CreateTransactionResponse
-	17, // 17: user.UserService.GetTransactionById:output_type -> user.GetTransactionByIdResponse
-	9,  // [9:18] is the sub-list for method output_type
-	0,  // [0:9] is the sub-list for method input_type
-	0,  // [0:0] is the sub-list for extension type_name
-	0,  // [0:0] is the sub-list for extension extendee
-	0,  // [0:0] is the sub-list for field type_name
+	20, // 0: user.GetTransactionByIdResponse.transaction:type_name -> user.Transaction
+	20, // 1: user.GetTransactionsByAccountIdResponse.transactions:type_name -> user.Transaction
+	0,  // 2: user.UserService.CreateUser:input_type -> user.CreateUserRequest
+	2,  // 3: user.UserService.LoginUser:input_type -> user.LoginUserRequest
+	4,  // 4: user.UserService.GetUserById:input_type -> user.GetUserByIdRequest
+	6,  // 5: user.UserService.GetUserByEmail:input_type -> user.GetUserByEmailRequest
+	8,  // 6: user.UserService.GetAccountById:input_type -> user.GetAccountByIdRequest
+	10, // 7: user.UserService.DepositBalance:input_type -> user.DepositBalanceRequest
+	12, // 8: user.UserService.WithdrawBalance:input_type -> user.WithdrawBalanceRequest
+	14, // 9: user.UserService.CreateTransaction:input_type -> user.CreateTransactionRequest
+	16, // 10: user.UserService.GetTransactionById:input_type -> user.GetTransactionByIdRequest
+	1,  // 11: user.UserService.CreateUser:output_type -> user.CreateUserResponse
+	3,  // 12: user.UserService.LoginUser:output_type -> user.LoginUserResponse
+	5,  // 13: user.UserService.GetUserById:output_type -> user.GetUserByIdResponse
+	7,  // 14: user.UserService.GetUserByEmail:output_type -> user.GetUserByEmailResponse
+	9,  // 15: user.UserService.GetAccountById:output_type -> user.GetAccountByIdResponse
+	11, // 16: user.UserService.DepositBalance:output_type -> user.DepositBalanceResponse
+	13, // 17: user.UserService.WithdrawBalance:output_type -> user.WithdrawBalanceResponse
+	15, // 18: user.UserService.CreateTransaction:output_type -> user.CreateTransactionResponse
+	17, // 19: user.UserService.GetTransactionById:output_type -> user.GetTransactionByIdResponse
+	11, // [11:20] is the sub-list for method output_type
+	2,  // [2:11] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_api_user_user_proto_init() }
@@ -1220,7 +1363,7 @@ func file_api_user_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_user_user_proto_rawDesc), len(file_api_user_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   18,
+			NumMessages:   21,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
